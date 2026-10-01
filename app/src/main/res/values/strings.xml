@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MyCalendar</string>
+
+    <!-- Наши задачи -->
+    <string name="task_1">Купить продукты</string>
+    <string name="task_2">Сделать зарядку</string>
+    <string name="task_3">Позвонить маме</string>
+    <string name="task_4">Прочитать главу книги</string>
+    <string name="task_5">Написать отчет по учебе</string>
+</resources>
