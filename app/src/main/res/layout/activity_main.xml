@@ -5,82 +5,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tvTitle"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTasks"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="80dp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <!-- Задача 1 -->
-        <TextView
-            android:id="@+id/task1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/task_1"
-            android:textSize="18sp"
-            android:padding="12dp"
-            android:background="#E0E0E0"
-            android:layout_marginBottom="8dp"/>
-
-        <!-- Задача 2 -->
-        <TextView
-            android:id="@+id/task2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/task_2"
-            android:textSize="18sp"
-            android:padding="12dp"
-            android:background="#E0E0E0"
-            android:layout_marginBottom="8dp"/>
-
-        <!-- Задача 3 -->
-        <TextView
-            android:id="@+id/task3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/task_3"
-            android:textSize="18sp"
-            android:padding="12dp"
-            android:background="#E0E0E0"
-            android:layout_marginBottom="8dp"/>
-
-        <!-- Задача 4 -->
-        <TextView
-            android:id="@+id/task4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/task_4"
-            android:textSize="18sp"
-            android:padding="12dp"
-            android:background="#E0E0E0"
-            android:layout_marginBottom="8dp"/>
-
-        <!-- Задача 5 -->
-        <TextView
-            android:id="@+id/task5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/task_5"
-            android:textSize="18sp"
-            android:padding="12dp"
-            android:background="#E0E0E0"
-            android:layout_marginBottom="8dp"/>
-
-    </LinearLayout>
+        android:layout_margin="16dp"
+        android:contentDescription="@string/add_task"
+        android:src="@android:drawable/ic_input_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

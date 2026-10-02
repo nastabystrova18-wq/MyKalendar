@@ -2,6 +2,7 @@
     <string name="app_name">MyCalendar</string>
 
     <!-- Наши задачи -->
+    <string name="add_task">Добавить задачу</string>
     <string name="task_1">Купить продукты</string>
     <string name="task_2">Сделать зарядку</string>
     <string name="task_3">Позвонить маме</string>
