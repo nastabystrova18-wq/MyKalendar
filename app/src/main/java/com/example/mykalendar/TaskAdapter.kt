@@ -27,16 +27,14 @@ class TaskAdapter(
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         val task = tasks[position]
         holder.tvTitle.text = task.title
-        holder.tvDate.text = task.date
+        holder.tvDate.text = "${task.date} ${task.time}"
 
-        // Меняем иконку в зависимости от статуса
-        if (task.isCompleted) {
+        if (task.isDone) {
             holder.ivStatus.setImageResource(android.R.drawable.checkbox_on_background)
         } else {
             holder.ivStatus.setImageResource(android.R.drawable.checkbox_off_background)
         }
 
-        // Обработка клика по элементу
         holder.itemView.setOnClickListener {
             onItemClick(task)
         }

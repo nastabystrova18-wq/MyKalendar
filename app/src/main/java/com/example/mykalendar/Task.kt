@@ -1,9 +1,15 @@
 package com.example.mykalendar
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "tasks")
 data class Task(
-    val id: Int,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
     val title: String,
     val description: String,
     val date: String,
-    var isCompleted: Boolean = false // По умолчанию задача не выполнена
+    val time: String,
+    var isDone: Boolean = false
 )
