@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.launch
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.appcompat.app.AlertDialog
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,14 +42,48 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = TaskAdapter(taskList) { task ->
-            val intent = Intent(this, TaskDetailActivity::class.java)
-            intent.putExtra("TASK_ID", task.id)
+            val intent = Intent(this, AddEditTaskActivity::class.java)
+            intent.putExtra("TASK_ID", task.id) // Передаём ID для редактирования
             startActivity(intent)
         }
         recyclerView.adapter = adapter
 
+        // Свайп для удаления (Задание 25)
+        val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
+            0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean = false
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                val taskToDelete = taskList[position]
+
+                // Показываем диалог подтверждения
+                AlertDialog.Builder(this@MainActivity)
+                    .setTitle(R.string.delete_confirmation)
+                    .setMessage(taskToDelete.title)
+                    .setPositiveButton(R.string.yes) { _, _ ->
+                        viewModel.deleteTask(taskToDelete)
+                    }
+                    .setNegativeButton(R.string.no) { _, _ ->
+                        // Возвращаем элемент на место, если отменили
+                        adapter.notifyItemChanged(position)
+                    }
+                    .setCancelable(false)
+                    .show()
+            }
+        }
+
+        val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
+
         fabAddTask.setOnClickListener {
-            val intent = Intent(this, AddTaskActivity::class.java)
+            val intent = Intent(this, AddEditTaskActivity::class.java)
+            // Не передаём TASK_ID — значит, режим создания
             startActivity(intent)
         }
 

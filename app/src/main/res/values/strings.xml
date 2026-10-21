@@ -8,4 +8,17 @@
     <string name="task_3">Позвонить маме</string>
     <string name="task_4">Прочитать главу книги</string>
     <string name="task_5">Написать отчет по учебе</string>
+    <string name="add_task_title">Новая задача</string>
+    <string name="edit_task_title">Редактировать задачу</string>
+    <string name="hint_title">Название</string>
+    <string name="hint_description">Описание</string>
+    <string name="hint_date">Дата</string>
+    <string name="hint_time">Время</string>
+    <string name="btn_save">Сохранить</string>
+    <string name="error_empty_title">Название не может быть пустым</string>
+    <string name="error_empty_date">Выберите дату</string>
+    <string name="error_empty_time">Выберите время</string>
+    <string name="delete_confirmation">Удалить задачу?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
 </resources>
